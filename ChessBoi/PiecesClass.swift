@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class pieces : UIImage {
+    var moves = 1
+}
+
+class tiles : UIImageView {
+    var piece = pieces.self
+    var occupied = Bool()
+//    var 
+    
+}
