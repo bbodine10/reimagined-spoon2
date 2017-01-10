@@ -104,7 +104,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if counter == 56 {images.image = #imageLiteral(resourceName: "WhiteKnight")}
                 if counter == 65 {images.image = #imageLiteral(resourceName: "WhiteRook")}
                 
-                if counter == 8 { images.image = #imageLiteral(resourceName: "BlackPawn")}
+                if counter == 8 {images.image = #imageLiteral(resourceName: "BlackPawn")}
                 if counter == 17 {images.image = #imageLiteral(resourceName: "BlackPawn")}
                 if counter == 26 {images.image = #imageLiteral(resourceName: "BlackPawn")}
                 if counter == 35 {images.image = #imageLiteral(resourceName: "BlackPawn")}
@@ -132,9 +132,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             view.reloadInputViews()
             
         }
-        for a in 0...63 {
-            tiles.remove(at: a)
-        }
+        
+//        for a in 2...72 {
+//            tiles.remove(at: a)
+//        }
+
+//        for a in  {
+//            
+//        }
         
         CreateBoard()
     }
