@@ -162,11 +162,48 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 //            tiles.remove(at: a)
 //        }
 
-//        for a in  {
-//            
-//        }
+        for a in 0...72 {
+            if counter == a {
+                images.image = nil
+                counter = 0
+            }
+        }
+        print("New Game")
+//        CreateBoard()
         
-        CreateBoard()
+        if counter == 3 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 12 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 21 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 30 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 39 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 48 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 57 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 66 {images.image = #imageLiteral(resourceName: "WhitePawn")}
+        if counter == 2 {images.image = #imageLiteral(resourceName: "WhiteRook")}
+        if counter == 11 {images.image = #imageLiteral(resourceName: "WhiteKnight")}
+        if counter == 20 {images.image = #imageLiteral(resourceName: "WhiteBishop")}
+        if counter == 29 {images.image = #imageLiteral(resourceName: "WhiteKing")}
+        if counter == 38 {images.image = #imageLiteral(resourceName: "WhiteQueen")}
+        if counter == 47 {images.image = #imageLiteral(resourceName: "WhiteBishop")}
+        if counter == 56 {images.image = #imageLiteral(resourceName: "WhiteKnight")}
+        if counter == 65 {images.image = #imageLiteral(resourceName: "WhiteRook")}
+        
+        if counter == 8 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 17 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 26 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 35 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 44 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 53 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 62 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 71 {images.image = #imageLiteral(resourceName: "BlackPawn")}
+        if counter == 9 {images.image = #imageLiteral(resourceName: "BlackRook")}
+        if counter == 18 {images.image = #imageLiteral(resourceName: "BlackKnight")}
+        if counter == 27 {images.image = #imageLiteral(resourceName: "BlackBishop")}
+        if counter == 36 {images.image = #imageLiteral(resourceName: "BlackKing")}
+        if counter == 45 {images.image = #imageLiteral(resourceName: "BlackQueen")}
+        if counter == 54 {images.image = #imageLiteral(resourceName: "BlackBishop")}
+        if counter == 63 {images.image = #imageLiteral(resourceName: "BlackKnight")}
+        if counter == 72 {images.image = #imageLiteral(resourceName: "BlackRook")}
     }
 }
 
