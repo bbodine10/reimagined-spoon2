@@ -49,7 +49,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             
         }
-        
+        checkLoss()
+       
     }
     
     func CreateBoard() {
@@ -124,6 +125,30 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             
         }
+    }
+    func checkLoss() {
+        //check for loss
+        var BKing = 0
+        var WKing = 0
+        for images in tiles {
+            if images.image == #imageLiteral(resourceName: "BlackKing") {
+                BKing += 1
+            }
+            if images.image == #imageLiteral(resourceName: "WhiteKing") {
+                WKing += 1
+            }
+        }
+        if BKing == 0 {
+            let alert = UIAlertController(title: "Black Has Lost!", message: nil, preferredStyle: .alert)
+            let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+            self.present(alert, animated: true, completion: nil)
+            alert.addAction(OK)
+        }
+        if WKing == 0 {
+            let alert = UIAlertController(title: "White Has Lost!", message: nil, preferredStyle: .alert)
+            let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+            self.present(alert, animated: true, completion: nil)
+            alert.addAction(OK)        }
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
