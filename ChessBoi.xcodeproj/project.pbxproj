@@ -14,6 +14,7 @@
 		C56C3FF01E1C1700006DE89E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56C3FEE1E1C1700006DE89E /* LaunchScreen.storyboard */; };
 		C56C3FFB1E1C1700006DE89E /* ChessBoiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C3FFA1E1C1700006DE89E /* ChessBoiTests.swift */; };
 		C56C40061E1C1700006DE89E /* ChessBoiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C40051E1C1700006DE89E /* ChessBoiUITests.swift */; };
+		C5D590611E254273001A509A /* PiecesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D590601E254273001A509A /* PiecesClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C56C40011E1C1700006DE89E /* ChessBoiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessBoiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56C40051E1C1700006DE89E /* ChessBoiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoiUITests.swift; sourceTree = "<group>"; };
 		C56C40071E1C1700006DE89E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5D590601E254273001A509A /* PiecesClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiecesClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				C56C3FE51E1C1700006DE89E /* AppDelegate.swift */,
 				C56C3FE71E1C1700006DE89E /* ViewController.swift */,
+				C5D590601E254273001A509A /* PiecesClass.swift */,
 				C56C3FE91E1C1700006DE89E /* Main.storyboard */,
 				C56C3FEC1E1C1700006DE89E /* Assets.xcassets */,
 				C56C3FEE1E1C1700006DE89E /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				C56C3FE81E1C1700006DE89E /* ViewController.swift in Sources */,
 				C56C3FE61E1C1700006DE89E /* AppDelegate.swift in Sources */,
+				C5D590611E254273001A509A /* PiecesClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +518,7 @@
 				C56C400C1E1C1700006DE89E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C56C400D1E1C1700006DE89E /* Build configuration list for PBXNativeTarget "ChessBoiTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +527,7 @@
 				C56C400F1E1C1700006DE89E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C56C40101E1C1700006DE89E /* Build configuration list for PBXNativeTarget "ChessBoiUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +536,7 @@
 				C56C40121E1C1700006DE89E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
