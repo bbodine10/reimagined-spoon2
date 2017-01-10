@@ -137,9 +137,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 //            tiles.remove(at: a)
 //        }
 
-//        for a in  {
-//            
-//        }
+        for a in 0...72 {
+            if counter == a {images.image = nil}
+        }
         
         CreateBoard()
     }
