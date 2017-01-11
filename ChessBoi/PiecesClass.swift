@@ -13,9 +13,23 @@ class pieces : UIImage {
     var moves = 1
 }
 
-class tiles : UIImageView {
-    var piece = pieces.self
+class Tile {
+    var imageView = UIImageView()
+    var piece = UIImage()
     var occupied = Bool()
-//    var 
+    var identifier = 0
+    var isHighlited = false
+    var x = Double()
+    var y = Double()
+    var width = Double()
+    var height = Double()
     
-}
+    convenience init(x: Double, y: Double, width: Double, height: Double) {
+    self.init()
+    self.x = x
+    self.y = y
+    self.width = width
+    self.height = height
+    }
+        }
+   
