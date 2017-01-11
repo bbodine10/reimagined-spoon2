@@ -123,7 +123,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if counter == 72 {images.image = #imageLiteral(resourceName: "BlackRook")}
                 
             }
-            
         }
     }
     func checkLoss() {
