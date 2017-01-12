@@ -14,6 +14,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var tiles: [Tile] = []
     var counter = 0
     var oddEven = 0
+    var blackTurn = false
+    var turn = 0
 //    var newTile = Tile.self
     
     override func viewDidLoad() {
@@ -30,14 +32,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func handleTap(_ sender: UITapGestureRecognizer) {
-        
+     
         for newTile in tiles {
             newTile.imageView.layer.borderWidth = 0
         }
         let imageView = sender.view as! UIImageView
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.yellow.cgColor
-
+        colorTurn()
     }
     func handleDoubleTap(_sender: UITapGestureRecognizer) {
         print("double Tapped")
@@ -47,6 +49,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 imageView.image = newTile.imageView.image
                 newTile.imageView.image = nil
                 imageView.layer.borderWidth = 0
+                turn += 1
             }
             
         }
@@ -174,6 +177,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         CreateBoard()
     }
     
+    func colorTurn() {
+        
+        if turn % 2 == 0 {
+            for newTile in tiles {
+                if newTile.imageView.image == #imageLiteral(resourceName: "BlackBishop") || newTile.imageView.image == #imageLiteral(resourceName: "BlackKing") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackQueen") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackPawn") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackRook") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackKnight") {
+                    newTile.imageView.layer.borderWidth = 0
+                }
+            }
+        }
+        if turn % 2 == 1 {
+            for newTile in tiles {
+                if newTile.imageView.image == #imageLiteral(resourceName: "WhiteKing") || newTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteRook") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteQueen") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteKnight") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteBishop") {
+                    newTile.imageView.layer.borderWidth = 0
+                }
+            }
+        }
+
+    }
 //    func bishopMove() {
 //        var b = 0
 //        
@@ -183,7 +204,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 //            }
 //            for a in 1...64 {
 //                b - 7
-//                newTile.imageView.backgroundColor == UIColor.red
+//                if b == newTile.identifier {
+//                    newTile.imageView.backgroundColor == UIColor.red
+//                }
 //                if b < 0 {
 //                    break
 //                }
