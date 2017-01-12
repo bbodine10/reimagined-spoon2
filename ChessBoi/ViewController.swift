@@ -12,7 +12,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
     
     var tiles: [Tile] = []
-    var counter = 0
+    var counter = 1
 //    var newTile = Tile.self
     
     override func viewDidLoad() {
@@ -58,7 +58,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let tileWidth = (screenWidth/8)
         
         for x in 0...7 {
-            counter += 1
+//            counter += 1
             
             for y in 0...7 {
                 counter += 1
@@ -130,6 +130,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
+    
     func checkLoss() {
         //check for loss
         var BKing = 0
@@ -169,4 +170,3 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         CreateBoard()
     }
 }
-

@@ -31,5 +31,11 @@ class Tile {
     self.width = width
     self.height = height
     }
-        }
+}
    
+//knight +6 -6, +10 -10, +15 -15, +17 -17
+//bishop % 7 == 3 or % 9 == 2
+//king +1 -1, +7 -7, +8 -8, +9 -9
+//queen bishop + rook
+//rook =
+//pawn if statement for first move is +-2 or +-1, else, +-1, else occupied by other color = +9 -7, -9 +7
