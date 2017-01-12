@@ -11,6 +11,8 @@ import UIKit
 
 class pieces : UIImage {
     var moves = 1
+    var colorBlack = Bool()
+    var type = ""
 }
 
 class Tile {
@@ -18,6 +20,8 @@ class Tile {
     var piece = UIImage()
     var occupied = Bool()
     var identifier = 0
+    var colum = 0
+    var row = 0
     var isHighlited = false
     var x = Double()
     var y = Double()
