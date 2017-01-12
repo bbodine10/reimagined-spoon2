@@ -12,7 +12,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
     
     var tiles: [Tile] = []
-    var counter = 1
+    var counter = 0
+    var oddEven = 0
 //    var newTile = Tile.self
     
     override func viewDidLoad() {
@@ -58,7 +59,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let tileWidth = (screenWidth/8)
         
         for x in 0...7 {
-//            counter += 1
+            oddEven += 1
             
             for y in 0...7 {
                 counter += 1
