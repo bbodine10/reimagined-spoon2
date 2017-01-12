@@ -156,7 +156,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             let alert = UIAlertController(title: "White Has Lost!", message: nil, preferredStyle: .alert)
             let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
             self.present(alert, animated: true, completion: nil)
-            alert.addAction(OK)        }
+            alert.addAction(OK)
+        }
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
