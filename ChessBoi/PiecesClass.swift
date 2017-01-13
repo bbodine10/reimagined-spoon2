@@ -27,6 +27,7 @@ class Tile {
     var y = Double()
     var width = Double()
     var height = Double()
+    var oddEven = 0
     
     convenience init(x: Double, y: Double, width: Double, height: Double) {
     self.init()
