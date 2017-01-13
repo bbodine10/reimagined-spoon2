@@ -62,6 +62,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let tileWidth = (screenWidth/8)
         
         for x in 0...7 {
+         
             oddEven += 1
             for y in 0...7 {
                 oddEven += 1
@@ -162,6 +163,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
+        turn = 0
         for newTile in tiles {
             newTile.imageView.removeFromSuperview()
             view.reloadInputViews()
