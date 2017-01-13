@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var oddEven = 0
     var blackTurn = false
     var turn = 0
+    var tileArray: [Tile] = []
 //    var newTile = Tile.self
     
     override func viewDidLoad() {
@@ -40,6 +41,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.yellow.cgColor
         colorTurn()
+        whitePawnMove()
+        blackPawnMove()
     }
     func handleDoubleTap(_sender: UITapGestureRecognizer) {
         print("double Tapped")
@@ -55,6 +58,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         checkLoss()
        
+        for newTile in tiles {
+            if newTile.imageView.backgroundColor == UIColor.red {
+                if newTile.oddEven % 2 == 0 {
+                    newTile.imageView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                }
+                else {
+                    newTile.imageView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                }
+            }
+        }
     }
     
     func CreateBoard() {
@@ -64,6 +77,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         for x in 0...7 {
          
             oddEven += 1
+            
             for y in 0...7 {
                 oddEven += 1
                 counter += 1
@@ -82,6 +96,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.view.addSubview(newTile.imageView)
                 tiles.append(newTile)
                 newTile.identifier = counter
+                newTile.oddEven = oddEven
                 
                 
                 let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleDoubleTap(_sender:)))
@@ -100,43 +115,43 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 
                 if counter == 2 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
-                if counter == 10 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
-                if counter == 18 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
-                if counter == 26 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
-                if counter == 34 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
+                if counter == 12 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
+                if counter == 22 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
+                if counter == 32 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
                 if counter == 42 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
-                if counter == 50 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
-                if counter == 58 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
+                if counter == 52 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
+                if counter == 62 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
+                if counter == 72 {newTile.imageView.image = #imageLiteral(resourceName: "WhitePawn")}
                 if counter == 1 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteRook")}
-                if counter == 9 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteKnight")}
-                if counter == 17 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteBishop")}
-                if counter == 25 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteKing")}
-                if counter == 33 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteQueen")}
-                if counter == 41 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteBishop")}
-                if counter == 49 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteKnight")}
-                if counter == 57 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteRook")}
+                if counter == 11 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteKnight")}
+                if counter == 21 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteBishop")}
+                if counter == 31 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteKing")}
+                if counter == 41 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteQueen")}
+                if counter == 51 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteBishop")}
+                if counter == 61 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteKnight")}
+                if counter == 71 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteRook")}
                 
                 if counter == 7 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
-                if counter == 15 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
-                if counter == 23 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
-                if counter == 31 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
-                if counter == 39 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
+                if counter == 17 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
+                if counter == 27 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
+                if counter == 37 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
                 if counter == 47 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
-                if counter == 55 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
-                if counter == 63 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
+                if counter == 57 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
+                if counter == 67 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
+                if counter == 77 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
                 if counter == 8 {newTile.imageView.image = #imageLiteral(resourceName: "BlackRook")}
-                if counter == 16 {newTile.imageView.image = #imageLiteral(resourceName: "BlackKnight")}
-                if counter == 24 {newTile.imageView.image = #imageLiteral(resourceName: "BlackBishop")}
-                if counter == 32 {newTile.imageView.image = #imageLiteral(resourceName: "BlackKing")}
-                if counter == 40 {newTile.imageView.image = #imageLiteral(resourceName: "BlackQueen")}
-                if counter == 48 {newTile.imageView.image = #imageLiteral(resourceName: "BlackBishop")}
-                if counter == 56 {newTile.imageView.image = #imageLiteral(resourceName: "BlackKnight")}
-                if counter == 64 {newTile.imageView.image = #imageLiteral(resourceName: "BlackRook")}
+                if counter == 18 {newTile.imageView.image = #imageLiteral(resourceName: "BlackKnight")}
+                if counter == 28 {newTile.imageView.image = #imageLiteral(resourceName: "BlackBishop")}
+                if counter == 38 {newTile.imageView.image = #imageLiteral(resourceName: "BlackKing")}
+                if counter == 48 {newTile.imageView.image = #imageLiteral(resourceName: "BlackQueen")}
+                if counter == 58 {newTile.imageView.image = #imageLiteral(resourceName: "BlackBishop")}
+                if counter == 68 {newTile.imageView.image = #imageLiteral(resourceName: "BlackKnight")}
+                if counter == 78 {newTile.imageView.image = #imageLiteral(resourceName: "BlackRook")}
                 
             }
-            
         }
     }
+    
     func checkLoss() {
         //check for loss
         var BKing = 0
@@ -159,7 +174,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             let alert = UIAlertController(title: "White Has Lost!", message: nil, preferredStyle: .alert)
             let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
             self.present(alert, animated: true, completion: nil)
-            alert.addAction(OK)        }
+            alert.addAction(OK)
+        }
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
@@ -168,7 +184,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             newTile.imageView.removeFromSuperview()
             view.reloadInputViews()
         }
-        for a in 0...72 {
+        for a in 0...78 {
             if counter == a {
                 counter = 0
             }
@@ -186,6 +202,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
         }
+        
         if turn % 2 == 1 {
             for newTile in tiles {
                 if newTile.imageView.image == #imageLiteral(resourceName: "WhiteKing") || newTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteRook") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteQueen") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteKnight") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteBishop") {
@@ -195,29 +212,82 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
 
     }
-//    func bishopMove() {
-//        var b = 0
-//        
-//        for newTile in tiles {
-//            if newTile.imageView.layer.borderWidth == 2 && newTile.imageView.image == #imageLiteral(resourceName: "BlackBishop"){
-//                b = newTile.identifier
-//            }
-//            for a in 1...64 {
-//                b - 7
-//                if b == newTile.identifier {
-//                    newTile.imageView.backgroundColor == UIColor.red
-//                }
-//                if b < 0 {
-//                    break
-//                }
-//            }
-//            }
-//        }
-//    
+//the movement functions__________________________________________________________
     
-}
-
-//functions that limit movement
-//use break statement
-//add 7 or subtract 9( or whatever) until it reaches 0 or 64, then break and highlight those squares
+    func whitePawnMove () {
+        tileArray.removeAll()
+        var a = 0
+        var b = 0
+        var pawnTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") && newTile.imageView.layer.borderWidth == 2{
+                pawnTile = newTile
+            }
+        }
+        if  pawnTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") && pawnTile.imageView.layer.borderWidth == 2 {
+        if turn == 0 || turn == 1 {
+            print("got in")
+            b = pawnTile.identifier + 2
+            for newTile in tiles {
+                if newTile.identifier == b {
+                    tileArray.append(newTile)
+                } }
+                a = pawnTile.identifier + 1
+                for newTile in tiles {
+                    if newTile.identifier == a {
+                        tileArray.append(newTile)
+                    }
+            
+        
+        }}
+            
+        else { a = pawnTile.identifier + 1
+        for newTile in tiles {
+            if newTile.identifier == a {
+                tileArray.append(newTile)
+            }}
+        }
+        for tiles in tileArray {
+            tiles.imageView.backgroundColor = UIColor.red
+        }
+        } }
+    
+    func blackPawnMove() {
+        tileArray.removeAll()
+        var a = 0
+        var b = 0
+        var pawnTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "BlackPawn") && newTile.imageView.layer.borderWidth == 2{
+                pawnTile = newTile
+            }
+        }
+        if  pawnTile.imageView.image == #imageLiteral(resourceName: "BlackPawn") && pawnTile.imageView.layer.borderWidth == 2 {
+            if turn == 0 || turn == 1 {
+                print("got in")
+                b = pawnTile.identifier - 2
+                for newTile in tiles {
+                    if newTile.identifier == b {
+                        tileArray.append(newTile)
+                    } }
+                a = pawnTile.identifier - 1
+                for newTile in tiles {
+                    if newTile.identifier == a {
+                        tileArray.append(newTile)
+                    }
+                    
+                    
+                }}
+                
+            else { a = pawnTile.identifier - 1
+                for newTile in tiles {
+                    if newTile.identifier == a {
+                        tileArray.append(newTile)
+                    }}
+            }
+            for tiles in tileArray {
+                tiles.imageView.backgroundColor = UIColor.red
+            }
+        } }
+    }
 
