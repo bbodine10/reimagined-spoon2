@@ -75,7 +75,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let tileWidth = (screenWidth/8)
         
         for x in 0...7 {
-         
+            if counter % 10 == 8 {
+                counter += 2
+            }
             oddEven += 1
             
             for y in 0...7 {
