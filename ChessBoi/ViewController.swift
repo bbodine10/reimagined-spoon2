@@ -1,3 +1,6 @@
+
+
+
 //
 //  ViewController.swift
 //  ChessBoi
@@ -43,6 +46,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         colorTurn()
         whitePawnMove()
         blackPawnMove()
+        rookMove()
     }
     func handleDoubleTap(_sender: UITapGestureRecognizer) {
         print("double Tapped")
@@ -57,7 +61,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             
         }
         checkLoss()
-       
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "BlackBishop") || newTile.imageView.image == #imageLiteral(resourceName: "BlackKing") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackQueen") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackPawn") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackRook") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackKnight")  {
+                newTile.team = "black"
+            }
+            else if newTile.imageView.image == #imageLiteral(resourceName: "WhiteKing") || newTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteRook") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteQueen") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteKnight") ||  newTile.imageView.image == #imageLiteral(resourceName: "WhiteBishop")  {
+                newTile.team = "white" }
+        else {
+                    newTile.team = "none"
+                }
+        
+        }
         for newTile in tiles {
             if newTile.imageView.backgroundColor == UIColor.red {
                 if newTile.oddEven % 2 == 0 {
@@ -133,6 +147,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if counter == 51 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteBishop")}
                 if counter == 61 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteKnight")}
                 if counter == 71 {newTile.imageView.image = #imageLiteral(resourceName: "WhiteRook")}
+                if counter % 10 == 2 || counter % 10 == 1 {
+                    newTile.team = "white"
+                }
                 
                 if counter == 7 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
                 if counter == 17 {newTile.imageView.image = #imageLiteral(resourceName: "BlackPawn")}
@@ -150,6 +167,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if counter == 58 {newTile.imageView.image = #imageLiteral(resourceName: "BlackBishop")}
                 if counter == 68 {newTile.imageView.image = #imageLiteral(resourceName: "BlackKnight")}
                 if counter == 78 {newTile.imageView.image = #imageLiteral(resourceName: "BlackRook")}
+                if counter % 10 == 7 || counter % 10 == 8 {
+                    newTile.team = "black"
+                }
                 
             }
         }
@@ -220,6 +240,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         tileArray.removeAll()
         var a = 0
         var b = 0
+        var c = 0
+        var d = 0
         var pawnTile = Tile()
         for newTile in tiles {
             if newTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") && newTile.imageView.layer.borderWidth == 2{
@@ -239,15 +261,31 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                     if newTile.identifier == a {
                         tileArray.append(newTile)
                     }
-            
-        
+               
+                   
         }}
-            
+        
         else { a = pawnTile.identifier + 1
         for newTile in tiles {
-            if newTile.identifier == a {
+            if newTile.identifier == a && newTile.imageView.image == nil{
                 tileArray.append(newTile)
             }}
+            c = pawnTile.identifier + 11
+            d = pawnTile.identifier - 9
+            for newTiles in tiles {
+            if pawnTile.identifier == c && newTiles.team == "black"
+                {
+                tileArray.append(pawnTile)
+            }
+            }
+            for newTiles in tiles {
+            if pawnTile.identifier == d && newTiles.team == "black" {
+                tileArray.append(pawnTile)
+            }
+            }
+            
+            
+
         }
         for tiles in tileArray {
             tiles.imageView.backgroundColor = UIColor.red
@@ -283,7 +321,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 
             else { a = pawnTile.identifier - 1
                 for newTile in tiles {
-                    if newTile.identifier == a {
+                    if newTile.identifier == a && newTile.imageView.image == nil {
                         tileArray.append(newTile)
                     }}
             }
@@ -291,5 +329,29 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 tiles.imageView.backgroundColor = UIColor.red
             }
         } }
-    }
+    
 
+func rookMove() {
+    var a = 0
+    var rookTile = Tile()
+    for newTile in tiles {
+        if newTile.imageView.image == #imageLiteral(resourceName: "WhiteRook") && newTile.imageView.layer.borderWidth == 2{
+            rookTile = newTile
+        }
+    }
+    if  rookTile.imageView.image == #imageLiteral(resourceName: "BlackPawn") && rookTile.imageView.layer.borderWidth == 2 {
+        a = rookTile.identifier % 10
+        
+    for newTile in tiles {
+        if a == newTile.identifier % 10{
+            tileArray.append(newTile)
+        }
+        }
+    
+    
+        for tiles in tileArray {
+            tiles.imageView.backgroundColor = UIColor.red
+        }
+
+    }
+    }}

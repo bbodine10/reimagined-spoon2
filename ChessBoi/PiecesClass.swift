@@ -28,6 +28,7 @@ class Tile {
     var width = Double()
     var height = Double()
     var oddEven = 0
+    var team = "none"
     
     convenience init(x: Double, y: Double, width: Double, height: Double) {
     self.init()
