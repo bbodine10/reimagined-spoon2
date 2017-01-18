@@ -46,7 +46,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         colorTurn()
         whitePawnMove()
         blackPawnMove()
-        rookMove()
+        whiteRookMove()
+        blackRookMove()
     }
     func handleDoubleTap(_sender: UITapGestureRecognizer) {
         print("double Tapped")
@@ -331,27 +332,66 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         } }
     
 
-func rookMove() {
+func whiteRookMove() {
     var a = 0
+    var b = 0
     var rookTile = Tile()
     for newTile in tiles {
         if newTile.imageView.image == #imageLiteral(resourceName: "WhiteRook") && newTile.imageView.layer.borderWidth == 2{
             rookTile = newTile
         }
     }
-    if  rookTile.imageView.image == #imageLiteral(resourceName: "BlackPawn") && rookTile.imageView.layer.borderWidth == 2 {
+    //try whiterook or blackrook
+    if rookTile.imageView.image == #imageLiteral(resourceName: "WhiteRook") && rookTile.imageView.layer.borderWidth == 2 {
         a = rookTile.identifier % 10
+        b = rookTile.identifier - a
         
     for newTile in tiles {
-        if a == newTile.identifier % 10{
-            tileArray.append(newTile)
+        if a == newTile.identifier % 10 && newTile.team != "white" {
+        tileArray.append(newTile)
         }
+    }
+        for newTile in tiles {
+            if b == newTile.identifier - (newTile.identifier % 10) && newTile.team != "white" {
+                tileArray.append(newTile)
+            }
         }
-    
     
         for tiles in tileArray {
             tiles.imageView.backgroundColor = UIColor.red
         }
 
     }
+    }
+
+    func blackRookMove() {
+        var a = 0
+        var b = 0
+        var rookTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "BlackRook") && newTile.imageView.layer.borderWidth == 2{
+                rookTile = newTile
+            }
+        }
+        
+        if rookTile.imageView.image == #imageLiteral(resourceName: "BlackRook") && rookTile.imageView.layer.borderWidth == 2 {
+            a = rookTile.identifier % 10
+            b = rookTile.identifier - a
+        
+            for newTile in tiles {
+                if a == newTile.identifier % 10 && newTile.team != "black"{
+                    tileArray.append(newTile)
+                }
+            }
+            for newTile in tiles {
+                if b == newTile.identifier - (newTile.identifier % 10) && newTile.team != "black"{
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for tiles in tileArray {
+                tiles.imageView.backgroundColor = UIColor.red
+            }
+            
+        }
     }}
