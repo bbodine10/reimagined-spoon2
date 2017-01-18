@@ -20,7 +20,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var blackTurn = false
     var turn = 0
     var tileArray: [Tile] = []
-//    var newTile = Tile.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +33,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //Taping once selects a piece to move and shows squares it can move to_________________________________
+    //Taping once selects a piece to move and shows squares it can move to _________________________________
     func handleTap(_ sender: UITapGestureRecognizer) {
      
         for newTile in tiles {
@@ -55,21 +54,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let screenWidth = Double(UIScreen.main.bounds.width)
         let tileWidth = (screenWidth/16)
         let screenHeight = Int(UIScreen.main.bounds.height)
+        var x = 0
         print("double Tapped")
+        //moves piece
         let imageView = _sender.view as! UIImageView
         for newTile in tiles {
-            if newTile.imageView.image != nil {
-                var deadPiece = UIImageView(frame: CGRect(x: 0, y: screenHeight - 35 , width: 15, height: 15))
-                deadPiece.image = imageView.image
-                self.view.addSubview(deadPiece)
-            }
             if newTile.imageView.layer.borderWidth == 2 {
                 imageView.image = newTile.imageView.image
                 newTile.imageView.image = nil
                 imageView.layer.borderWidth = 0
                 turn += 1
-              
-
+            }
+            if newTile.imageView.image != nil  {
+                var deadPiece = UIImageView(frame: CGRect(x: x, y: screenHeight - 35 , width: 15, height: 15))
+                deadPiece.image = imageView.image
+                self.view.addSubview(deadPiece)
             }
 
             
@@ -87,6 +86,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
         
         }
+        //resets hilighted color back to original color
         for newTile in tiles {
             if newTile.imageView.backgroundColor == UIColor.red {
                 if newTile.oddEven % 2 == 0 {
@@ -94,11 +94,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 else {
                     newTile.imageView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            
                 }}}}
     //creates board_____________________________________________________________
     func CreateBoard() {
         let screenWidth = Double(UIScreen.main.bounds.width)
         let tileWidth = (screenWidth/8)
+        let screenHeight = Double(UIScreen.main.bounds.height)
+        
         
         for x in 0...7 {
             if counter % 10 == 8 {
@@ -109,7 +112,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             for y in 0...7 {
                 oddEven += 1
                 counter += 1
-                var newTile = Tile(x: tileWidth * Double(CGFloat(x)), y:  50 * Double(CGFloat(y)) + 100, width: tileWidth, height: tileWidth)
+                var newTile = Tile(x: tileWidth * Double(CGFloat(x)), y:  (screenHeight / 15) * Double(CGFloat(y)) + 100, width: tileWidth, height: tileWidth)
                 
                 newTile.imageView = UIImageView(frame: CGRect(x: newTile.x, y: newTile.y, width: newTile.width, height: newTile.height))
                 
@@ -187,7 +190,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func checkLoss() {
-        //check for loss
+        //check for loss by seeing if the king is taken
         var BKing = 0
         var WKing = 0
         for newTile in tiles {
@@ -211,7 +214,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             alert.addAction(OK)
         }
     }
-    
+    //resets game__________________________________
     @IBAction func resetButton(_ sender: UIButton) {
         turn = 0
         for newTile in tiles {
@@ -226,7 +229,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         print("New Game")
         CreateBoard()
     }
-    
+    //this limits movement to only the players whos turn it is
     func colorTurn() {
         
         if turn % 2 == 0 {
@@ -246,6 +249,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
 
     }
+    
+    
     
 //the movement functions__________________________________________________________
     
