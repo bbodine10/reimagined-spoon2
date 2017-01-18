@@ -47,6 +47,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         blackPawnMove()
         whiteRookMove()
         blackRookMove()
+        whiteKingMove()
+        blackKingMove()
     }
     
     //double tapping moves the selected piece_________________________________________________________
@@ -350,6 +352,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
 
 func whiteRookMove() {
+    tileArray.removeAll()
     var a = 0
     var b = 0
     var rookTile = Tile()
@@ -382,6 +385,7 @@ func whiteRookMove() {
     }
 
     func blackRookMove() {
+        tileArray.removeAll()
         var a = 0
         var b = 0
         var rookTile = Tile()
@@ -411,4 +415,167 @@ func whiteRookMove() {
             }
             
         }
-    }}
+    }
+    
+    func whiteKingMove() {
+        tileArray.removeAll()
+        var a = 0
+        var b = 0
+        var c = 0
+        var d = 0
+        var e = 0
+        var f = 0
+        var g = 0
+        var h = 0
+        var kingTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "WhiteKing") && newTile.imageView.layer.borderWidth == 2 {
+                kingTile = newTile
+            }
+        }
+        
+        if kingTile.imageView.image == #imageLiteral(resourceName: "WhiteKing") && kingTile.imageView.layer.borderWidth == 2 {
+            a = kingTile.identifier + 1
+            b = kingTile.identifier - 1
+            c = kingTile.identifier + 9
+            d = kingTile.identifier - 9
+            e = kingTile.identifier + 10
+            f = kingTile.identifier - 10
+            g = kingTile.identifier + 11
+            h = kingTile.identifier - 11
+            
+            for newTile in tiles {
+                if a == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if b == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if c == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+
+            for newTile in tiles {
+                if d == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+
+            for newTile in tiles {
+                if e == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if f == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if g == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if h == newTile.identifier && newTile.team != "white" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for tiles in tileArray {
+                tiles.imageView.backgroundColor = UIColor.red
+            }
+        }
+    }
+
+    func blackKingMove() {
+        tileArray.removeAll()
+        var a = 0
+        var b = 0
+        var c = 0
+        var d = 0
+        var e = 0
+        var f = 0
+        var g = 0
+        var h = 0
+        var kingTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "BlackKing") && newTile.imageView.layer.borderWidth == 2 {
+                kingTile = newTile
+            }
+        }
+        
+        if kingTile.imageView.image == #imageLiteral(resourceName: "BlackKing") && kingTile.imageView.layer.borderWidth == 2 {
+            a = kingTile.identifier + 1
+            b = kingTile.identifier - 1
+            c = kingTile.identifier + 9
+            d = kingTile.identifier - 9
+            e = kingTile.identifier + 10
+            f = kingTile.identifier - 10
+            g = kingTile.identifier + 11
+            h = kingTile.identifier - 11
+            
+            for newTile in tiles {
+                if a == newTile.identifier  && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if b == newTile.identifier  && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if c == newTile.identifier  && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if d == newTile.identifier  && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if e == newTile.identifier && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if f == newTile.identifier  && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if g == newTile.identifier && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for newTile in tiles {
+                if h == newTile.identifier  && newTile.team != "black" {
+                    tileArray.append(newTile)
+                }
+            }
+            
+            for tiles in tileArray {
+                tiles.imageView.backgroundColor = UIColor.red
+            }
+        }
+    }
+}
