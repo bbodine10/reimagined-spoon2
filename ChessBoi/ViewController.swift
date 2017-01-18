@@ -34,7 +34,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    //Taping once selects a piece to move and shows squares it can move to_________________________________
     func handleTap(_ sender: UITapGestureRecognizer) {
      
         for newTile in tiles {
@@ -49,19 +49,33 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         whiteRookMove()
         blackRookMove()
     }
+    
+    //double tapping moves the selected piece_________________________________________________________
     func handleDoubleTap(_sender: UITapGestureRecognizer) {
+        let screenWidth = Double(UIScreen.main.bounds.width)
+        let tileWidth = (screenWidth/16)
+        let screenHeight = Int(UIScreen.main.bounds.height)
         print("double Tapped")
         let imageView = _sender.view as! UIImageView
         for newTile in tiles {
+            if newTile.imageView.image != nil {
+                var deadPiece = UIImageView(frame: CGRect(x: 0, y: screenHeight - 35 , width: 15, height: 15))
+                deadPiece.image = imageView.image
+                self.view.addSubview(deadPiece)
+            }
             if newTile.imageView.layer.borderWidth == 2 {
                 imageView.image = newTile.imageView.image
                 newTile.imageView.image = nil
                 imageView.layer.borderWidth = 0
                 turn += 1
+              
+
             }
+
             
         }
         checkLoss()
+        //when a piece is moved it gives the tile a property of team black or white
         for newTile in tiles {
             if newTile.imageView.image == #imageLiteral(resourceName: "BlackBishop") || newTile.imageView.image == #imageLiteral(resourceName: "BlackKing") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackQueen") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackPawn") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackRook") ||  newTile.imageView.image == #imageLiteral(resourceName: "BlackKnight")  {
                 newTile.team = "black"
@@ -80,11 +94,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 else {
                     newTile.imageView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-                }
-            }
-        }
-    }
-    
+                }}}}
+    //creates board_____________________________________________________________
     func CreateBoard() {
         let screenWidth = Double(UIScreen.main.bounds.width)
         let tileWidth = (screenWidth/8)
@@ -93,7 +104,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             if counter % 10 == 8 {
                 counter += 2
             }
-            
             oddEven += 1
             
             for y in 0...7 {
@@ -203,6 +213,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
+        turn = 0
         for newTile in tiles {
             newTile.imageView.removeFromSuperview()
             view.reloadInputViews()
@@ -235,6 +246,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
 
     }
+    
 //the movement functions__________________________________________________________
     
     func whitePawnMove () {
