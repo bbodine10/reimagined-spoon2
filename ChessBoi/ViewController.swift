@@ -352,6 +352,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
 
 func whiteRookMove() {
+    tileArray.removeAll()
     var a = 0
     var b = 0
     var rookTile = Tile()
@@ -384,6 +385,7 @@ func whiteRookMove() {
     }
 
     func blackRookMove() {
+        tileArray.removeAll()
         var a = 0
         var b = 0
         var rookTile = Tile()
@@ -416,6 +418,7 @@ func whiteRookMove() {
     }
     
     func whiteKingMove() {
+        tileArray.removeAll()
         var a = 0
         var b = 0
         var c = 0
@@ -442,49 +445,49 @@ func whiteRookMove() {
             h = kingTile.identifier - 11
             
             for newTile in tiles {
-                if a == newTile.identifier + 1 && newTile.team != "white" {
+                if a == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if b == newTile.identifier - 1 && newTile.team != "white" {
+                if b == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if c == newTile.identifier + 9 && newTile.team != "white" {
+                if c == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
 
             for newTile in tiles {
-                if d == newTile.identifier - 9 && newTile.team != "white" {
+                if d == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
 
             for newTile in tiles {
-                if e == newTile.identifier + 10 && newTile.team != "white" {
+                if e == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if f == newTile.identifier - 10 && newTile.team != "white" {
+                if f == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if g == newTile.identifier + 11 && newTile.team != "white" {
+                if g == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if h == newTile.identifier - 11 && newTile.team != "white" {
+                if h == newTile.identifier && newTile.team != "white" {
                     tileArray.append(newTile)
                 }
             }
@@ -496,6 +499,7 @@ func whiteRookMove() {
     }
 
     func blackKingMove() {
+        tileArray.removeAll()
         var a = 0
         var b = 0
         var c = 0
@@ -522,49 +526,49 @@ func whiteRookMove() {
             h = kingTile.identifier - 11
             
             for newTile in tiles {
-                if a == newTile.identifier + 1 && newTile.team != "white" {
+                if a == newTile.identifier  && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if b == newTile.identifier - 1 && newTile.team != "white" {
+                if b == newTile.identifier  && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if c == newTile.identifier + 9 && newTile.team != "white" {
+                if c == newTile.identifier  && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if d == newTile.identifier - 9 && newTile.team != "white" {
+                if d == newTile.identifier  && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if e == newTile.identifier + 10 && newTile.team != "white" {
+                if e == newTile.identifier && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if f == newTile.identifier - 10 && newTile.team != "white" {
+                if f == newTile.identifier  && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if g == newTile.identifier + 11 && newTile.team != "white" {
+                if g == newTile.identifier && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
             
             for newTile in tiles {
-                if h == newTile.identifier - 11 && newTile.team != "white" {
+                if h == newTile.identifier  && newTile.team != "black" {
                     tileArray.append(newTile)
                 }
             }
