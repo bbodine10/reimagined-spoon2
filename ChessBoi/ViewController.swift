@@ -35,7 +35,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     //Taping once selects a piece to move and shows squares it can move to _________________________________
     func handleTap(_ sender: UITapGestureRecognizer) {
-     
+        
         for newTile in tiles {
             newTile.imageView.layer.borderWidth = 0
         }
