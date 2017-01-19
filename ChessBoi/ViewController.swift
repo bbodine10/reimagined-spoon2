@@ -49,6 +49,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         blackRookMove()
         whiteKingMove()
         blackKingMove()
+        whiteBishopMove()
+        blackBishopMove()
     }
     
     //double tapping moves the selected piece_________________________________________________________
