@@ -49,6 +49,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         blackRookMove()
         whiteKingMove()
         blackKingMove()
+        whiteBishopMove()
+        blackBishopMove()
     }
     
     //double tapping moves the selected piece_________________________________________________________
@@ -578,4 +580,76 @@ func whiteRookMove() {
             }
         }
     }
+    
+    func whiteBishopMove() {
+        var a = 0
+        var b = 0
+        var color = UIColor()
+        var bishopTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "WhiteBishop") && newTile.imageView.layer.borderWidth == 2 {
+                bishopTile = newTile
+            }
+        }
+        if bishopTile.imageView.image == #imageLiteral(resourceName: "WhiteBishop") && bishopTile.imageView.layer.borderWidth == 2 {
+            a = bishopTile.identifier % 9
+            b = bishopTile.identifier % 11
+            color = bishopTile.imageView.backgroundColor!
+            
+            for newTile in tiles {
+                if a == newTile.identifier % 9 && newTile.team != "white" && color == newTile.imageView.backgroundColor{
+                    tileArray.append(newTile)
+                }
+            }
+                for newTile in tiles {
+                    if b == newTile.identifier % 11 && newTile.team != "white" && color == newTile.imageView.backgroundColor{
+                        tileArray.append(newTile)
+                    }
+                }
+            }
+        for tiles in tileArray {
+            tiles.imageView.backgroundColor = UIColor.red
+        }
+    }
+    func blackBishopMove() {
+        var a = 0
+        var b = 0
+        var color = UIColor()
+        var bishopTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "BlackBishop") && newTile.imageView.layer.borderWidth == 2 {
+                bishopTile = newTile
+            }
+        }
+        if bishopTile.imageView.image == #imageLiteral(resourceName: "BlackBishop") && bishopTile.imageView.layer.borderWidth == 2 {
+            a = bishopTile.identifier % 9
+            b = bishopTile.identifier % 11
+            color = bishopTile.imageView.backgroundColor!
+            
+            for newTile in tiles {
+                if a == newTile.identifier % 9 && newTile.team != "black" && color == newTile.imageView.backgroundColor{
+                    tileArray.append(newTile)
+                }
+            }
+            for newTile in tiles {
+                if b == newTile.identifier % 11 && newTile.team != "black" && color == newTile.imageView.backgroundColor{
+                    tileArray.append(newTile)
+                }
+            }
+        }
+        for tiles in tileArray {
+            tiles.imageView.backgroundColor = UIColor.red
+        }
+    }
+    func whiteQueenMove() {
+        var a = 0
+        var b = 0
+        var color = UIColor()
+        var queenTile = Tile()
+        for newTile in tiles {
+            if newTile.imageView.image == #imageLiteral(resourceName: "WhiteQueen") && newTile.imageView.layer.borderWidth == 2 {
+                queenTile = newTile
+            }
+    }
+}
 }
