@@ -51,6 +51,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         blackKingMove()
         whiteBishopMove()
         blackBishopMove()
+        whiteQueenMove()
+        blackQueenMove()
         whiteKnightMove()
         blackKnightMove()
     }
@@ -590,6 +592,14 @@ func whiteRookMove() {
     
     func blackBishopMove() {
         tileArray.removeAll()
+        
+    }
+    
+    func whiteQueenMove() {
+        
+    }
+    
+    func blackQueenMove() {
         
     }
     
