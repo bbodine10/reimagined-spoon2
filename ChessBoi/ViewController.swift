@@ -581,5 +581,11 @@ func whiteRookMove() {
         }
     }
     
+    func whiteBishopMove() {
+        
+    }
     
+    func blackBishopMove() {
+        
+    }
 }
