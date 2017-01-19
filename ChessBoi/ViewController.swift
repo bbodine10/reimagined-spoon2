@@ -600,7 +600,51 @@ func whiteRookMove() {
     }
     
     func blackQueenMove() {
-        
+        tileArray.removeAll()
+                var a = 0
+                var b = 0
+                var c = 0
+                var d = 0
+                var color = UIColor()
+                var queenTile = Tile()
+                for newTile in tiles {
+                        if newTile.imageView.image == #imageLiteral(resourceName: "BlackQueen") && newTile.imageView.layer.borderWidth == 2 {
+                                queenTile = newTile
+                            }
+                        if queenTile.imageView.image == #imageLiteral(resourceName: "BlackQueen") && queenTile.imageView.layer.borderWidth == 2 {
+                                a = queenTile.identifier % 9
+                                    b = queenTile.identifier % 11
+                                    c = queenTile.identifier % 10
+                                    d = queenTile.identifier - c
+                                    color = queenTile.imageView.backgroundColor!
+                    
+                    
+                    
+                            for newTile in tiles {
+                                    if a == newTile.identifier % 9 && newTile.team != "black" && color == newTile.imageView.backgroundColor{
+                                            tileArray.append(newTile)
+                                        }
+                                }
+                            for newTile in tiles {
+                                    if b == newTile.identifier % 11 && newTile.team != "black" && color == newTile.imageView.backgroundColor{
+                                            tileArray.append(newTile)
+                                        }
+                                }
+                            for newTile in tiles {
+                                    if c == newTile.identifier % 10 && newTile.team != "black"{
+                                            tileArray.append(newTile)
+                                        }
+                                }
+                            for newTile in tiles {
+                                    if d == newTile.identifier - (newTile.identifier % 10) && newTile.team != "black"{
+                                            tileArray.append(newTile)
+                                        }
+                                }
+                            for tiles in tileArray {
+                                    tiles.imageView.backgroundColor = UIColor.red
+                                }
+                    }
+            }
     }
     
     func whiteKnightMove() {
