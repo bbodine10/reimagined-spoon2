@@ -578,4 +578,6 @@ func whiteRookMove() {
             }
         }
     }
+    
+    
 }
