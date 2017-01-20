@@ -13,6 +13,7 @@ import UIKit
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var timeLabel: UILabel!
     
     var tiles: [Tile] = []
     var counter = 0
@@ -21,13 +22,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var turn = 0
     var tileArray: [Tile] = []
     
+    //timer variables
+    var time = 1800
+    var minutes = 0
+    var seconds = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         // Do any additional setup loading the view, typically from a nib.
         CreateBoard()
-        
-    }
+        var gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+            }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,6 +41,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     //Taping once selects a piece to move and shows squares it can move to _________________________________
     func handleTap(_ sender: UITapGestureRecognizer) {
+
         
         for newTile in tiles {
             newTile.imageView.layer.borderWidth = 0
@@ -900,5 +907,11 @@ func whiteRookMove() {
                 tiles.imageView.backgroundColor = UIColor.red
             }
         }
+    }
+    func countDown() {
+        time -= 1
+        seconds = time % 60
+        minutes = time / 60
+        timeLabel.text = String(minutes) + " : " + String(seconds)
     }
 }
