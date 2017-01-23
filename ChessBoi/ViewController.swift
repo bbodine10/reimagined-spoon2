@@ -14,6 +14,7 @@ import UIKit
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var blackTimeLabel: UILabel!
     
     var tiles: [Tile] = []
     var counter = 0
@@ -27,12 +28,27 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var minutes = 0
     var seconds = 0
     
+    var blackTime = 1800
+    var blackMinutes = 0
+    var blackSecods = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         // Do any additional setup loading the view, typically from a nib.
         CreateBoard()
-        var gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        
+        var whiteTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        var blackTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(blackCountDown), userInfo: nil, repeats: true)
+        
+        if turn % 2 == 0{
+            blackTimer.invalidate()
+            var whiteTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        }
+        else if turn % 2 == 1 {
+            whiteTimer.invalidate()
+              var blackTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(blackCountDown), userInfo: nil, repeats: true)
+        }
             }
     
     override func didReceiveMemoryWarning() {
@@ -270,6 +286,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 //the movement functions__________________________________________________________
     
     func whitePawnMove () {
+        
+
         tileArray.removeAll()
         var a = 0
         var b = 0
@@ -657,6 +675,7 @@ func whiteRookMove() {
     }
     
     func whiteQueenMove() {
+        tileArray.removeAll()
         var a = 0
         var b = 0
                 var c = 0
@@ -908,10 +927,22 @@ func whiteRookMove() {
             }
         }
     }
+    
     func countDown() {
+        if turn % 2 == 0 {
         time -= 1
         seconds = time % 60
         minutes = time / 60
         timeLabel.text = String(minutes) + " : " + String(seconds)
+        }
+    }
+    func blackCountDown() {
+        if turn % 2 == 1 {
+            blackTime -= 1
+            blackSecods = time % 60
+            blackMinutes = time / 60
+            blackTimeLabel.text = String(blackMinutes) + " : " + String(blackSecods)
+
+        }
     }
 }
