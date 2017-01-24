@@ -31,6 +31,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var blackTime = 1800
     var blackMinutes = 0
     var blackSecods = 0
+    var blackTimer = Timer()
+    var whiteTimer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,22 +40,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         // Do any additional setup loading the view, typically from a nib.
         CreateBoard()
         
-        var whiteTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
-        var blackTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(blackCountDown), userInfo: nil, repeats: true)
+        whiteTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+
         
-        if turn % 2 == 0{
-            blackTimer.invalidate()
-            var whiteTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
-        }
-        else if turn % 2 == 1 {
-            whiteTimer.invalidate()
-              var blackTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(blackCountDown), userInfo: nil, repeats: true)
-        }
+    
             }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func handleTimers(whiteTurn: Bool) {
+        
     }
     //Taping once selects a piece to move and shows squares it can move to _________________________________
     func handleTap(_ sender: UITapGestureRecognizer) {
@@ -125,8 +124,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 else {
                     newTile.imageView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-            
-                }}}}
+                }
+            }
+        }
+      print(turn)
+        if turn % 2 == 1 {
+            whiteTimer.invalidate()
+            blackTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(blackCountDown), userInfo: nil, repeats: true)
+        }
+        else if turn % 2 == 0{
+            blackTimer.invalidate()
+            whiteTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        }
+        
+    }
     //creates board_____________________________________________________________
     func CreateBoard() {
         let screenWidth = Double(UIScreen.main.bounds.width)
@@ -259,6 +270,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         print("New Game")
         CreateBoard()
+        
+        blackTime = 1800
+        blackMinutes = blackTime / 60
+        blackSecods = blackTime % 60
+        blackTimeLabel.text = String(blackMinutes) + " : " + String(blackSecods) + "0"
+
+        
+        time = 1800
+        seconds = time % 60
+        minutes = time / 60
+        timeLabel.text = String(minutes) + " : " + String(seconds) + "0"
+
     }
     //this limits movement to only the players whos turn it is
     func colorTurn() {
@@ -286,19 +309,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 //the movement functions__________________________________________________________
     
     func whitePawnMove () {
-        
-
         tileArray.removeAll()
         var a = 0
         var b = 0
         var c = 0
         var d = 0
+        //grabs the tile that is tapped
         var pawnTile = Tile()
         for newTile in tiles {
             if newTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") && newTile.imageView.layer.borderWidth == 2{
                 pawnTile = newTile
             }
         }
+        //finds the spaces it can move to
         if  pawnTile.imageView.image == #imageLiteral(resourceName: "WhitePawn") && pawnTile.imageView.layer.borderWidth == 2 {
         if turn == 0 || turn == 1 {
             print("got in")
@@ -311,6 +334,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 for newTile in tiles {
                     if newTile.identifier == a {
                         tileArray.append(newTile)
+                        //appends moveable spaces into array
                     }
                
                    
@@ -339,9 +363,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
         }
         for tiles in tileArray {
+            //turns all moveable spaces in red
             tiles.imageView.backgroundColor = UIColor.red
         }
         } }
+    //format is the same for the rest of the pieces, just a change in finding the moveable spaces
     
     func blackPawnMove() {
         tileArray.removeAll()
@@ -939,8 +965,8 @@ func whiteRookMove() {
     func blackCountDown() {
         if turn % 2 == 1 {
             blackTime -= 1
-            blackSecods = time % 60
-            blackMinutes = time / 60
+            blackSecods = blackTime % 60
+            blackMinutes = blackTime / 60
             blackTimeLabel.text = String(blackMinutes) + " : " + String(blackSecods)
 
         }
